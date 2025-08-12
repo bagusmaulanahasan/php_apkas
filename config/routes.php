@@ -28,6 +28,6 @@ function base_url()
 
 function base_project()
 {
-    $base_location = $_SERVER['DOCUMENT_ROOT'] . '/latihan_php_dua/';
+    $base_location = $_SERVER['DOCUMENT_ROOT'] . '/apkas/';
     return $base_location;
 }

@@ -1,6 +1,6 @@
 <?php
 
-include "../config/database.php";
+include base_project()."/config/database.php";
 
 class Karyawan
 {

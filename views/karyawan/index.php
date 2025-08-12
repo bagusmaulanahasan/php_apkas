@@ -1,6 +1,7 @@
 <?php
 
-include "../../controllers/karyawanController.php";
+include "../config/routes.php";
+include base_project()."/controllers/karyawanController.php";
 
 $karyawanController = new KaryawanController();
 $dataKaryawan = $karyawanController->getAllKaryawan();
