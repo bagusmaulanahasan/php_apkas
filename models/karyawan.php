@@ -1,16 +1,18 @@
 <?php
-
-include base_project()."/config/database.php";
-
+include __DIR__ . "/../config/database.php";
 class Karyawan
 {
     public function getAllKaryawan()
     {
         $database = new Database();
-        $query = 'select * from karyawan';
+        $query = 'SELECT * FROM karyawan';
         $result = $database->conn->query($query);
-        return $result;
+
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
     }
 }
-
 ?>

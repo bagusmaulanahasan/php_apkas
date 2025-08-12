@@ -1,27 +1,27 @@
 <?php
-
 // include "../../config/routes.php";
-include base_project()."/models/karyawan.php";
+// include base_project() . "/models/karyawan.php";
+include __DIR__ . "/../models/karyawan.php";
 
 class KaryawanController
 {
     public function getAllKaryawan()
     {
-        $karyawan = new Karyawan();
-        $dataKaryawan = $karyawan->getAllKaryawan();
-        $bebas = '';
-        foreach ($dataKaryawan as $karyawan) {
-            $bebas += "
+        $model = new Karyawan();
+        $dataKaryawan = $model->getAllKaryawan();
+        $output = '';
+
+        foreach ($dataKaryawan as $row) {
+            $output .= "
                 <tr>
-                    <td>' . $karyawan->nama_karyawan . '</td>
-                    <td>' . $karyawan->alamat . '</td>
-                    <td>' . $karyawan->jenis_kelamin . '</td>
-                    <td>' . $karyawan->role . '</td>
+                    <td>{$row['nama_karyawan']}</td>
+                    <td>{$row['alamat']}</td>
+                    <td>{$row['jenis_kelamin']}</td>
+                    <td>{$row['role']}</td>
                 </tr>
-                ";
+            ";
         }
-        return $bebas;
+        return $output;
     }
 }
-
 ?>

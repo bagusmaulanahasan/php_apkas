@@ -1,5 +1,4 @@
 <?php
-
 class Database
 {
     public $conn;
@@ -7,15 +6,14 @@ class Database
     {
         $db_host = "localhost";
         $db_user = "root";
-        $db_pass = "0320";
+        $db_pass = "";
         $db_name = "db_kasir";
 
-        $this->conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+        $this->conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 
-        if ($this->conn -> connect_error) {
+        if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);
         }
     }
 }
-
 ?>
