@@ -6,7 +6,10 @@ include __DIR__ . "/../../controllers/karyawanController.php";
 $karyawanController = new KaryawanController();
 $dataKaryawan = $karyawanController->getAllKaryawan();
 
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +34,18 @@ $dataKaryawan = $karyawanController->getAllKaryawan();
             <?= $dataKaryawan ?>
         </tbody>
     </table>
+
+    <form method="post" action="proses_add.php">
+        <input type="text" name="nama" placeholder="Nama">
+        <input type="text" name="alamat" placeholder="Alamat">
+        <select name="jenis_kelamin">
+            <option value="laki-laki">Laki-laki</option>
+            <option value="perempuan">Perempuan</option>
+        </select>
+        <input type="text" name="role" placeholder="Role">
+        <button type="submit">Tambah</button>
+    </form>
+
 </body>
 
 </html>
