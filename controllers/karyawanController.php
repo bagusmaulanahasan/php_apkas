@@ -1,58 +1,55 @@
 <?php
-// include "../../config/routes.php";
-// include base_project() . "/models/karyawan.php";
-include __DIR__ . "/../models/karyawan.php";
+include_once "../../config/routes.php";
+include base_project() . "/models/karyawan.php";
+// include __DIR__ . "/../models/karyawan.php";
 
 class KaryawanController
 {
+    private $model;
+
+    public function __construct()
+    {
+        $this->model = new Karyawan();
+
+    }
+
     public function getAllKaryawan()
     {
-        $model = new Karyawan();
-        $dataKaryawan = $model->getAllKaryawan();
-        $output = '';
+        $dataKaryawan = $this->model->getAllKaryawan();
+        return $dataKaryawan;
+    }
 
-        foreach ($dataKaryawan as $row) {
-            $output .= "
-                <tr>
-                    <td>{$row['nama_karyawan']}</td>
-                    <td>{$row['alamat']}</td>
-                    <td>{$row['jenis_kelamin']}</td>
-                    <td>{$row['role']}</td>
-                </tr>
-            ";
-        }
-        return $output;
+    public function getKaryawanByID($id)
+    {
+        $dataKaryawan = $this->model->getKaryawanByID($id);
+        return $dataKaryawan;
     }
 
     // NEW CODE
-    public function add($nama, $alamat, $jenis_kelamin, $role) {
-        $model = new Karyawan();
-        return $model->addKaryawan($nama, $alamat, $jenis_kelamin, $role);
+    public function add($nama, $alamat, $jenis_kelamin, $role)
+    {
+        return $this->model->addKaryawan($nama, $alamat, $jenis_kelamin, $role);
     }
 
-//     public function add($nama, $alamat, $jenis_kelamin, $role) {
-//     $database = new Database();
-//     $stmt = $database->conn->prepare("INSERT INTO karyawan (nama_karyawan, alamat, jenis_kelamin, role) VALUES (?, ?, ?, ?)");
-//     if(!$stmt){
-//         die("Prepare failed: " . $database->conn->error);
-//     }
-//     $stmt->bind_param("ssss", $nama, $alamat, $jenis_kelamin, $role);
-//     if(!$stmt->execute()){
-//         die("Execute failed: " . $stmt->error);
-//     }
-//     return true;
-// }
-
-
-
-    public function update($id, $nama, $alamat, $jenis_kelamin, $role) {
-        $model = new Karyawan();
-        return $model->updateKaryawan($id, $nama, $alamat, $jenis_kelamin, $role);
+    public function update($id)
+    {
+        // if (isset($_POST['simpanEdit'])) {
+            $nama = $_POST['nama'];
+            $alamat = $_POST['alamat'];
+            $jenis_kelamin = $_POST['jenis_kelamin'];
+            $role = $_POST['role'];
+            $this->model->updateKaryawan($id, $nama, $alamat, $jenis_kelamin, $role);
+            // header("location: " . base_url() . '/views/karyawan/index.php');
+            // exit;
+        // }
     }
 
-    public function delete($id) {
-        $model = new Karyawan();
-        return $model->deleteKaryawan($id);
+    public function delete($id)
+    {
+        if ($id) {
+            $this->model->deleteKaryawan($id);
+        }
     }
+
 }
 ?>
