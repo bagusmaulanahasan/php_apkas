@@ -15,5 +15,4 @@
     <a href="../karyawan" class="p-2 rounded-xl duration-300 <?= isActive('karyawan') ?>">Karyawan</a>
     <a href="../barang" class="p-2 rounded-xl duration-300 <?= isActive('barang') ?>">Barang</a>
     <a href="../transaksi" class="p-2 rounded-xl duration-300 <?= isActive('transaksi') ?>">Transaksi</a>
-    <a href="../detail-transaksi" class="p-2 rounded-xl duration-300 <?= isActive('detail-transaksi') ?>">Detail Transaksi</a>
 </nav>

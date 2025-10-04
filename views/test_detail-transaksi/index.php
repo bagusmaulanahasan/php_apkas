@@ -1,4 +1,4 @@
-<?php
+index.php<?php
 
 include "../../config/routes.php";
 include base_project()."controllers/detailTransaksiController.php";
@@ -39,7 +39,7 @@ $action = $mode === 'edit' ? "proses_edit.php?id=" . $_GET['edit'] : "proses_add
         </thead>
         <tbody>
             <?php 
-                foreach ($dataDetailTransaksi as $row) : ?>
+                foreach ($data as $row) : ?>
                     <tr class="even:bg-gray-100 text-slate-800">
                         <td class="py-3 ps-2"><?=$row['nama_barang']?></td>
                         <td class="py-3"><?=$row['id_transaksi']?></td>
